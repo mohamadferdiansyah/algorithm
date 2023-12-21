@@ -3,31 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penerimaan Siswa</title>
+    <title>PENERIMAAN SISWA</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     
-    <p>Nilai Anda</p>
-    <input type="number" id="grade">
-    <p>Sudah membayar ? <span><input type="checkbox" id="payment"></span></p>
+    <h1>PENERIMAAN SISWA</h1>
+    <p>MASUKAN NILAI ANDA</p>
+    <input type="number" id="nilaiAwal">
     <input type="submit" onclick="lulus()">
     
-    <p>Keterangan: <span id="result"></span></p>
+    <p>KETERANGAN:</p>
+    <h4 id="result"></h4>
+    
+    <div id="pilihanJalur"></div>
 
+    <h4 id="hasilPilihanJalur"></h4>
+
+    <div id="tesUlang"></div>
+    <h4 id="hasilTes"></h4>
     <script>
 
         function lulus() {
             
-            let nilai = parseInt(document.getElementById("grade").value);
-            let pembayaran = document.getElementById("payment").checked;
-            const kkm = 75;
+            let nilai = parseInt(document.getElementById("nilaiAwal").value);
+
+            let result = document.getElementById("result");
+            let parentJalur = document.getElementById("pilihanJalur");
+            let hasilPilihan = document.getElementById("hasilPilihanJalur");
+            let parentTes = document.getElementById("tesUlang");
+            let hasilTes = document.getElementById("hasilTes");
+
+            let jalurRapot = document.createElement("input");
+            jalurRapot.type = "button";
+            jalurRapot.value = "JALUR RAPOT";
             
-            if (nilai >= kkm && pembayaran) {
-                document.getElementById("result").innerHTML = "anda diterima";
-            } else if (!pembayaran){
-                document.getElementById("result").innerHTML = "anda belum melakukan pembayaran"
-            } else {
-                document.getElementById("result").innerHTML = "nilai anda tidak kompeten"
+
+            let jalurPrestasi = document.createElement("input");
+            jalurPrestasi.type = "button";
+            jalurPrestasi.value = "JALUR PRESTASI";
+
+            let tesUlang = document.createElement("h4");
+            tesUlang.textContent = "SILAHKAN MASUKAN NILAI TES MANDIRI ANDA"
+
+            let inputTes = document.createElement("input");
+            inputTes.type = "number"
+            
+            let buttonTes = document.createElement("input");
+            buttonTes.type = "button"
+            buttonTes.value = "MASUKAN"
+
+            if (nilai >= 90 && nilai <= 100){
+                result.innerHTML = "NILAI ANDA SEMPURNA DAN LULUS";
+            } else if(nilai >= 80 && nilai < 90) {
+                result.innerHTML = "ANDA INGIN MASUK JALUR APA?";
+                parentJalur.appendChild(jalurRapot);
+                parentJalur.appendChild(jalurPrestasi);
+
+                jalurRapot.addEventListener("click", function(){
+                    hasilPilihan.innerHTML = "ANDA LULUS DENGAN JALUR RAPOT";
+                })
+                
+                jalurPrestasi.addEventListener("click", function(){
+                    hasilPilihan.innerHTML = "ANDA LULUS DENGAN JALUR PRESTASI";
+                })
+            } else if(nilai < 80){
+                parentTes.appendChild(tesUlang);
+                parentTes.appendChild(inputTes);
+                parentTes.appendChild(buttonTes);
+
+                
+                buttonTes.addEventListener("click", function(){
+                    let nilaiTes = parseInt(inputTes.value);
+
+                    if(nilaiTes >= 80 && nilaiTes <= 100){
+                        hasilTes.innerHTML = "ANDA LULUS TES ULANG";
+                    } else {
+                        hasilTes.innerHTML = "ANDA TIDAK LULUS"
+                    }
+
+                })
+
             }
 
         }

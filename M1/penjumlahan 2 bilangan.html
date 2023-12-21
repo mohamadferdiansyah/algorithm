@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PENJUMLAHAN 2 BILANGAN</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     
-    <p>Bilangan 1</p>
+    <h1>PENJUMLAHAN 2 BILANGAN</h1>
+    <p>BILANGAN 1</p>
     <input type="number" id="numberOne">
-    <p>Bilangan 2</p>
+    <p>BILANGAN 2</p>
     <input type="number" id="numberTwo">
+    <hr width="10%">
     <input type="submit" onclick="jumlah()">
 
     
-    <p>Hasil: <span id="result"></span></p>
+    <p>HASIL: <span id="result"></span></p>
 
     <script>
         
@@ -22,8 +30,10 @@
             let bilanganSatu = parseInt(document.getElementById("numberOne").value);
             let bilanganDua = parseInt(document.getElementById("numberTwo").value);
             let hasil = bilanganSatu + bilanganDua;
+
+            let result = document.getElementById("result");
             
-            document.getElementById("result").innerHTML = hasil;
+            result.innerHTML = hasil;
 
         }
 
