@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAMPU</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>KONDISI LAMPU</h1>
+    <p><i>*MASUKAN 1 ATAU 0</i></p>
+    <input type="number" id="sakelar">
+    <input type="submit" value="SAKLAR" onclick="toggle()">
+    <p id="info"></p>
+    <p>KONDISI LAMPU: <span id="kondisi"></span></p>
+
+    <script>        
+
+        function toggle(){
+            let sakelar = document.getElementById("sakelar").value;
+            let kondisi = document.getElementById("kondisi");
+            let error = document.getElementById("info");
+
+            error.innerHTML = ""
+
+            if(sakelar == 1){
+                kondisi.innerHTML = "NYALA";
+            } else if(sakelar == 0){
+                kondisi.innerHTML = "MATI";
+            } else {
+                error.innerHTML = "MASUKAN ANGKA 1 ATAU 0"
+                kondisi.innerHTML = "ERROR"
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

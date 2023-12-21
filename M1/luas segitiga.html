@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luas Segitiga</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>LUAS SEGITIGA</h1>
+    <p>MASUKAN ALAS SEGITIGA</p>
+    <input type="number" name="" id="alas">
+    <p>MASUKAN TINGGI SEGITIGA</p>
+    <input type="number" name="" id="tinggi">
+    <hr>
+    <input type="submit" onclick="hasil()">
+    <p>LUAS NYA ADALAH: <span id="luasSegitiga"></span></p>
+
+    <script>
+        function hasil(){
+            let alas = parseInt(document.getElementById("alas").value);
+            let tinggi = parseInt(document.getElementById("tinggi").value);
+            let hasil = (alas * tinggi) / 2;
+            let textLuas = document.getElementById("luasSegitiga");
+    
+            textLuas.innerHTML = hasil;
+        }
+
+    </script>
+
+</body>
+</html>

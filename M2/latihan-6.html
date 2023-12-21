@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TINGGI AIR</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CEK STATUS AIR</h1>
+    <p>MASUKAN TINGGI AIR</p>
+    <input type="number" id="tinggiAir">
+    <input type="submit" value="CEK" onclick="hasil()">
+    <p>STATUS AIR: <span id="status"></span></p>
+
+    <script>
+
+        function hasil(){
+            let tinggiAir = document.getElementById("tinggiAir").value;
+            let status = document.getElementById("status");
+
+            if(tinggiAir <= 500.0){
+                status.innerHTML = "AMAN";
+            } else if(tinggiAir > 500.0 && tinggiAir <= 600.0){
+                status.innerHTML = "WASPADA";
+            } else if(tinggiAir > 600.0 && tinggiAir <= 650.0){
+                status.innerHTML = "SIAGA 2";
+            } else if(tinggiAir > 650){
+                status.innerHTML = "SIAGA 1";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

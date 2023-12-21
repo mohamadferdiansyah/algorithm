@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilai Rata-Rata</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>PENERIMAAN SISWA</h1>
+    <h3>MASUKAN NILAI ANDA</h3>
+    <p>PABP</p>
+    <input type="number" id="pabp">
+    <p>MTK</p>
+    <input type="number" id="mtk">
+    <p>DPK</p>
+    <input type="number" id="dpk">
+    <hr width="10%">
+    <input type="submit" onclick="result()">
+
+    <p>KELULUSAN: <span id="lulus"></span></p>
+    <p>NILAI RATA-RATA: <span id="averages"></span></p>
+    <p>NILAI: <span id="grades"></span></p>
+    <script>
+
+        function result() {
+            let pabp = parseInt(document.getElementById("pabp").value);
+            let mtk = parseInt(document.getElementById("mtk").value);
+            let dpk = parseInt(document.getElementById("dpk").value);
+            let average = (pabp + mtk + dpk) / 3;
+            const kkm = average >= 75;
+
+            let lulus = document.getElementById("lulus");
+            let averages = document.getElementById("averages");
+            let grades = document.getElementById("grades");
+
+            if (average >= 80 && average <= 100) {
+                grade = "A";
+            } else if (average >= 75 && average < 80) {
+                grade = "B";
+            } else if (average >= 65 && average < 75) {
+                grade = "C";
+            } else if (average >= 45 && average < 65) {
+                grade = "D";
+            } else if (average >= 0 && average < 45) {
+                grade = "E";
+            } else {
+                grade = "K";
+            }
+
+            if (kkm) {
+                lulus.innerHTML = "ANDA LULUS";
+            } else {
+                lulus.innerHTML = "ANDA DITOLAK";
+            }
+
+            averages.innerHTML = average;
+            grades.innerHTML = grade;
+
+        }
+    </script>
+
+</body>
+</html>

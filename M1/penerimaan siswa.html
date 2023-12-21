@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penerimaan Siswa</title>
+</head>
+<body>
+    
+    <p>Nilai Anda</p>
+    <input type="number" id="grade">
+    <p>Sudah membayar ? <span><input type="checkbox" id="payment"></span></p>
+    <input type="submit" onclick="lulus()">
+    
+    <p>Keterangan: <span id="result"></span></p>
+
+    <script>
+
+        function lulus() {
+            
+            let nilai = parseInt(document.getElementById("grade").value);
+            let pembayaran = document.getElementById("payment").checked;
+            const kkm = 75;
+            
+            if (nilai >= kkm && pembayaran) {
+                document.getElementById("result").innerHTML = "anda diterima";
+            } else if (!pembayaran){
+                document.getElementById("result").innerHTML = "anda belum melakukan pembayaran"
+            } else {
+                document.getElementById("result").innerHTML = "nilai anda tidak kompeten"
+            }
+
+        }
+    </script>
+
+</body>
+</html>

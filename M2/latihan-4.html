@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BELANJA</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>BELANJA LEBIH DARI 100RB DAPAT DISKON 10%</h1>
+    <p>HARGA BARANG 1</p>
+    <input type="number" id="barang-1">
+    <p>HARGA BARANG 2</p>
+    <input type="number" id="barang-2">
+    <p>HARGA BARANG 3</p>
+    <input type="number" id="barang-3">
+    <p>TOTALKAN</p>
+    <input type="submit" value="HITUNG" onclick="total()">
+
+    <p>TOTAL DISKON: <span id="totalDiskon"></span></p>
+    <p>TOTAL HARGA: <span id="hargaAwal"></span></p>
+    <p>TOTAL HARGA SETELAH DISKON: <span id="hargaTotal"></span></p>
+
+    <script>
+
+        function total() {
+            let barangSatu = parseInt(document.getElementById("barang-1").value);
+            let barangDua = parseInt(document.getElementById("barang-2").value);
+            let barangTiga = parseInt(document.getElementById("barang-3").value);
+            let harga = barangSatu + barangDua + barangTiga;
+
+            let textDiskon = document.getElementById("totalDiskon");
+            let textHarga = document.getElementById("hargaAwal");
+            let textTotal = document.getElementById("hargaTotal");
+
+            if(harga > 100000){
+
+                let totalDiskon = 10/100*harga;
+                let totalHarga = harga - totalDiskon;
+                
+                textDiskon.innerHTML = totalDiskon;
+                textTotal.innerHTML = totalHarga;
+                textHarga.innerHTML = harga;
+
+            } else if(harga <= 100000){
+
+                textDiskon.innerHTML = "ANDA HARUS BELANJA LEBIH DARI RP 100,000";
+                textTotal.innerHTML = "TIDAK ADA DISKON";
+                textHarga.innerHTML = harga;
+            
+            }
+
+        }
+
+        
+    </script>
+
+</body>
+</html>

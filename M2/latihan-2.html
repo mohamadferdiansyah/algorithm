@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GANJIL&GENAP</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BILANGAN GANJIL GENAP DAN POSITIF NEGATIF</h1>
+    <p>MASUKAN BILANGAN</p>
+    <input type="number" id="bilangan">
+    <input type="submit" value="TENTUKAN" onclick="result()">
+    <p>BILANGAN INI ADALAH <span id="posneg"></span><span id="gagen"></span></p>
+
+    <script>
+
+        function result() {
+            let bilangan = document.getElementById("bilangan").value;
+            let bilGangen = document.getElementById("gagen");
+            let bilPosneg = document.getElementById("posneg");
+
+            if(bilangan % 2 == 0){
+                bilGangen.innerHTML = "GENAP";
+            } else {
+                bilGangen.innerHTML = "GANJIL";
+            }
+
+            if(bilangan > 0) {
+                bilPosneg.innerHTML = "POSITIF & ";
+            } else {
+                bilPosneg.innerHTML = "NEGATIF & ";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

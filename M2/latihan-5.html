@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAJI LEMBUR</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>HITUNG GAJI LEMBUR</h1>
+    <p>MASUKAN BERAPA JAM ANDA LEMBUR</p>
+    <input type="number" id="totalLembur">
+    <input type="submit" value="HITUNG" onclick="total()">
+    <p>GAJI LEMBUR ANDA: <span id="gajiLembur"></span></p>
+
+    <script>
+
+        function total(){
+            let lembur = document.getElementById("totalLembur").value;
+            let textLembur = document.getElementById("gajiLembur");
+
+            if(lembur < 6 && lembur >= 1){
+                textLembur.innerHTML = "Rp 100.000";
+            } else if(lembur == 6){
+                textLembur.innerHTML = "Rp 200.000";
+            } else if(lembur > 6){
+                textLembur.innerHTML = "Rp 300.000";
+            } else {
+                textLembur.innerHTML = "LEMBUR DULU";
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

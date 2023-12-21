@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BILANGAN TERBESAR</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>MENENTUKAN BILANGAN TERBESAR</h1>
+    <p>BILANGAN 1</p>
+    <input type="number" id="bilangan-1">
+    <p>BILANGAN 2</p>
+    <input type="number" id="bilangan-2">
+    <p>BILANGAN 3</p>
+    <input type="number" id="bilangan-3">
+    <p>CARI</p>
+    <input type="submit" value="CARI" onclick="hasil()">
+
+    <p>BILANGAN TERSEBAR ADALAH: <span id="result"></span></p>
+    
+    <script>
+        function hasil() {
+            let bil_1 = parseInt(document.getElementById("bilangan-1").value);
+            let bil_2 = parseInt(document.getElementById("bilangan-2").value);
+            let bil_3 = parseInt(document.getElementById("bilangan-3").value);
+            
+            let textHasil = document.getElementById("result");
+
+            if(bil_1 > bil_2 && bil_1 > bil_3) {
+                textHasil.innerHTML = bil_1;
+            } else if(bil_2 > bil_1 && bil_2 > bil_3) {
+                textHasil.innerHTML = bil_2;
+            } else if(bil_3 > bil_1 && bil_3 > bil_2) {
+                textHasil.innerHTML = bil_3;
+            } else if(bil_1 == bil_2 && bil_1 == bil_3) {
+                textHasil.innerHTML = "semua bilangan sama";
+            }
+        }
+    </script>
+
+</body>
+</html>

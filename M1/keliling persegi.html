@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keliling Persegi</title>
+    
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>KELILING PERSEGI</h1>
+    <p>MASUKAN SISI PERSEGI</p>
+    <input type="number" id="luasPersegi">
+    <input type="submit" value="HITUNG" onclick="total()">
+    <p>KELILING NYA ADALAH: <span id="hasil"></span></p>
+
+    <script>
+
+        function total(){
+            let sisi = parseInt(document.getElementById("luasPersegi").value);
+            let hasil = document.getElementById("hasil");
+            let rumus = sisi * 4;
+            
+            hasil.innerHTML = rumus;
+
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p>Bilangan 1</p>
+    <input type="number" id="numberOne">
+    <p>Bilangan 2</p>
+    <input type="number" id="numberTwo">
+    <input type="submit" onclick="jumlah()">
+
+    
+    <p>Hasil: <span id="result"></span></p>
+
+    <script>
+        
+        function jumlah() {
+            let bilanganSatu = parseInt(document.getElementById("numberOne").value);
+            let bilanganDua = parseInt(document.getElementById("numberTwo").value);
+            let hasil = bilanganSatu + bilanganDua;
+            
+            document.getElementById("result").innerHTML = hasil;
+
+        }
+
+    </script>
+</body>
+</html>
