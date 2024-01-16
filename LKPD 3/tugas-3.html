@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEK CUACA</title>
+</head>
+<body>
+    <h1>CEK CUACA</h1>
+
+    <p>MASUKAN TEMPERATUR (°F):</p>
+    <input type="number" placeholder="MASUKAN DATA" id="temperaturInput"/>
+    <input type="submit" value="CEKCUACA" onclick="hitung()">
+
+    <div id="hasil">
+
+    </div>
+
+    <script>
+
+        function hitung() {
+            let temperaturFahrenheit = parseFloat(document.getElementById("temperaturInput").value);
+            let temperaturCelsius = (5 / 9) * (temperaturFahrenheit - 32);
+            let elemntHasil = document.getElementById("hasil");
+
+            if (isNaN(temperaturFahrenheit)) {
+                alert("Masukkan data yang benar!");
+                return;
+            }
+
+            if (temperaturCelsius > 30) {
+                elemntHasil.innerHTML = "<p>CUACA SAAT INI PANAS</p>" + "<span>" + temperaturCelsius + " CELCIUS</span>";
+            } else if (temperaturCelsius < 25) {
+                elemntHasil.innerHTML = "<p>CUACA SAAT INI DINGIN</p>" + "<span>" + temperaturCelsius + " CELCIUS</span>";
+            } else {
+                elemntHasil.innerHTML = "<p>CUACA SAAT INI NORMAL</p>" + "<span>" + temperaturCelsius + " CELCIUS</span>";
+        }
+        }
+        
+    </script>
+</body>
+</html>

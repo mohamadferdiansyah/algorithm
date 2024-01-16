@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HARGA BUAH</title>
+</head>
+<body>
+  
+  <h1>Kalkulator Harga Buah</h1>
+  <p>MASUKAN BERAT BUAH (GRAM)</p>
+  <input type="number" placeholder="MASUKAN BERAT" id="beratBuah">
+  <input type="submit" value="HITUNG" onclick="hitung()">
+
+  <div id="hasil">
+
+  </div>
+
+  <script>
+
+    function hitung() {
+      let hasil = document.getElementById('hasil');
+      let berat = parseFloat(document.getElementById('beratBuah').value);
+      const hargaKg = 500;
+      let totalHargaBefore = (berat / 100) * hargaKg;
+      let diskon = 0.05 * totalHargaBefore;
+      let totalHargaAfter = totalHargaBefore - diskon;
+
+      if (isNaN(berat)) {
+                alert("Masukkan data yang benar!");
+                return;
+            }
+
+      hasil.innerHTML = "<p>Total Harga Sebelum Diskon: " + totalHargaBefore + " rupiah</p>" + "<p>Diskon: " + diskon + " rupiah</p>" + "<p>Total Harga Setelah Diskon: " + totalHargaAfter + " rupiah</p>";
+
+    }
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tahun kabisat</title>
+</head>
+<body>
+    
+    <script>
+
+        // for
+        // for(let thn = 1600; thn <= 2024; thn+=4){
+        //     if(thn % 4 == 0 && thn % 100 != 0){
+        //         console.log(thn + " adalah tahun kabisat");
+        //     } else if(thn % 400 == 0){
+        //         console.log(thn + " adalah tahun kabisat");
+        //     } else if(thn % 100 == 0){
+        //         console.log(thn + " bukan tahun kabisat");
+        //     } else {
+        //         console.log(thn + " bukan tahun kabisat")
+        //     }
+        // }
+
+        let thn = 1600;
+        
+        do {
+        if (thn % 4 == 0 && thn % 100 != 0) {
+            console.log(thn +' adalah tahun kabisat');
+        } else if (thn % 400 == 0) {
+            console.log(thn +' adalah tahun kabisat');
+        } else if (thn % 100 == 0 ) {
+            console.log(thn +' bukan kabisat');
+        }   else {
+            console.log(thn +' bukan kabisat');
+        }
+            thn+=4;
+        } while(thn <= 2024)
+
+
+    </script>
+
+</body>
+</html>

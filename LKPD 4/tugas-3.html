@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1 SECOND</title>
+  </head>
+  <body>
+    <h1>MENAMBAHKAN 1 DETIK</h1>
+    <h3>MASUKAN DATA WAKTU</h3>
+    <p>JAM</p>
+    <input type="number" placeholder="MASUKAN DATA" id="inputJam" />
+    <p>MENIT</p>
+    <input type="number" placeholder="MASUKAN DATA" id="inputMenit" />
+    <p>DETIK</p>
+    <input type="number" placeholder="MASUKAN DATA" id="inputDetik" />
+    <input type="submit" value="HITUNG" onclick="hitung()" />
+
+    <div id="hasil"></div>
+
+    <script>
+      function hitung() {
+        let elementHasil = document.getElementById("hasil");
+        let dataJam = parseFloat(document.getElementById("inputJam").value);
+        let dataMenit = parseFloat(document.getElementById("inputMenit").value);
+        let dataDetik = parseFloat(document.getElementById("inputDetik").value);
+        let totalDetik = dataJam * 3600 + dataMenit * 60 + dataDetik;
+        let hasilTotalDetik = totalDetik + 1;
+
+        let totalJam = Math.floor(hasilTotalDetik / 3600);
+        let sisaDetik = hasilTotalDetik % 3600;
+        let totalMenit = Math.floor(sisaDetik / 60);
+        let detik = sisaDetik % 60;
+
+        elementHasil.innerHTML =
+          "<p>" +
+          dataJam +
+          ":" +
+          dataMenit +
+          ":" +
+          dataDetik +
+          " MENJADI " +
+          totalJam +
+          ":" +
+          totalMenit +
+          ":" +
+          detik +
+          "</p>";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HITUNG GAJI</title>
+</head>
+<body>
+
+    <h1>HITUNG GAJI KARYAWAN</h1>
+
+    <p>MASUKAN NAMA KARYAWAN</p>
+    <input type="text" placeholder="MASUKAN NAMA" id="inputNama">
+    <p>MASUKAN GAJI POKOK</p>
+    <input type="number" placeholder="MASUKAN GAJI" id="inputGajiPokok">
+    <input type="submit" value="HITUNG" onclick="hitung()">
+
+    <div id="hasil">
+
+    </div>
+
+    <script>
+
+        function hitung(){
+            let elementHasil = document.getElementById('hasil');
+            let namaKaryawan = document.getElementById('inputNama').value;
+            let gajiPokok = parseFloat(document.getElementById('inputGajiPokok').value);
+            let tunjangan = 0.2 * gajiPokok;
+            let pajak = 0.15 * (gajiPokok + tunjangan);
+            let gajiBersih = gajiPokok + tunjangan - pajak;
+            
+            if (namaKaryawan === "" || isNaN(gajiPokok)) {
+                alert("Masukkan data yang benar!");
+                return;
+            }
+
+            elementHasil.innerHTML = "<p>NAMA KARYAWAN: " + namaKaryawan + "</p>" + "<p>TUNJANGAN: " + tunjangan + "</p>" + "<p>PAJAK: " + pajak + "</p>" + "<p>GAJI BERSIH: " + gajiBersih + "</p>";
+
+        } 
+
+    </script>
+</body>
+</html>

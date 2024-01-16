@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>IDENTIFIKASI KODE PEGAWAI</h1>
+    <p>MASUKAN KODE PEGAWAI ANDA</p>
+    <input type="number" placeholder="MASUKAN KODE" id="inputKodePegawai">
+    <input type="submit" value="CEK" onclick="cari()">
+
+    <div id="hasil">
+
+    </div>
+
+    <script>
+
+        function cari(){
+            let elementHasil = document.getElementById('hasil');
+            let kodePegawai = parseFloat(document.getElementById('inputKodePegawai').value);
+            let golongan = Math.floor(kodePegawai / 10000000000);
+            let tgl = Math.floor(kodePegawai / 100000000) % 100;
+            let bln = Math.floor(kodePegawai / 1000000) % 100;
+            let nameBln;
+            let thn = Math.floor(kodePegawai / 100) % 10000;
+            let urut = kodePegawai % 10;
+            
+            if (golongan < 1 || golongan > 4 || tgl < 1 || tgl > 31 || bln < 1 || bln > 12 || thn < 1900 || thn > 2024) {
+                elementHasil.innerHTML = "<p>MASUKAN KODE PEGAWAI YANG VALID!</p>";
+                return;
+            }
+
+            switch(bln){
+                case 1:
+                    nameBln = "JANUARI";
+                    break;
+                case 2:
+                    nameBln = "FEBRUARI";
+                    break;
+                case 3:
+                    nameBln = "MARET";
+                    break;
+                case 4:
+                    nameBln = "APRIL";
+                    break;
+                case 5:
+                    nameBln = "MEI";
+                    break;
+                case 6:
+                    nameBln = "JUNI";
+                    break;
+                case 7:
+                    nameBln = "JULI";
+                    break;
+                case 8:
+                    nameBln = "AGUSTUS";
+                    break;
+                case 9:
+                    nameBln = "SEPTEMBER";
+                    break;
+                case 10:
+                    nameBln = "OKTOBER";
+                    break;
+                case 11:
+                    nameBln = "NOVEMBER";
+                    break;
+                case 12:
+                    nameBln = "DESEMBER";
+                    break;
+                    default:
+                    nameBln = "error";
+            }
+
+            
+            elementHasil.innerHTML = "<h3>INFO PEGAWAI</h3>" + "<p>GOLONGAN: " + golongan + "</p>" + "<p>TANGGAL LAHIR: " + tgl + "-" + nameBln + "-" + thn + "</p>" + "<p>NOMOR URUT: " + urut + "</p>"
+            
+        }
+
+    </script>
+
+</body>
+</html>

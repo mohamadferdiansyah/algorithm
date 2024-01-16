@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KONVERSI DETIK KE JAM-MENIT-DETIK</title>
+</head>
+<body>
+
+    <h1>KONVERSI DETIK KE JAM-MENIT-DETIK</h1>
+
+    <p>MASUKAN TOTAL DETIK:</p>
+    <input type="number" placeholder="MASUKAN DATA" id="inputDetik">
+    <input type="submit" value="HITUNG" onclick="hitung()">
+    
+    <div id="hasil">
+
+    </div>
+
+    <script>
+        function hitung() {
+            let hasilElement = document.getElementById('hasil');
+            let totalDetik = parseInt(document.getElementById('inputDetik').value);
+            let jam = Math.floor(totalDetik / 3600);
+            let sisaDetik = totalDetik % 3600;
+            let menit = Math.floor(sisaDetik / 60);
+            let detik = sisaDetik % 60;
+
+            hasilElement.innerHTML = "<p>" + totalDetik + " DETIK SAMA DENGAN " + jam + " JAM " + menit + " MENIT " + detik + " DETIK</p>"; 
+
+        }
+    </script>
+</body>
+</html>

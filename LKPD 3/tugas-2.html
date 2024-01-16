@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BILANGAN BULAT</title>
+</head>
+<body>
+    <h1>IDENTIFIKASI BILANGAN</h1>
+
+    <P>MASUKAN BILANGAN BULAT</P>
+    <input type="number" placeholder="MASUKAN BILANGAN" id="bilangan"/>
+    <input type="submit" value="IDENTIFIKASI" onclick="hitung()">
+
+    <div id="hasil">
+    
+    </div>
+
+    <script>
+    function hitung() {
+        let bilangan = parseFloat(document.getElementById("bilangan").value);
+        let elementHasil = document.getElementById("hasil");
+        let satuan = bilangan % 10;
+        let puluhan = Math.floor((bilangan / 10) % 10);
+        let ratusan = Math.floor((bilangan / 100) % 10);  
+
+        if (isNaN(bilangan)) {
+                alert("Masukkan data yang benar!");
+                return;
+            }
+
+        elementHasil.innerHTML = "<p>Angka satuan: " + satuan + "</p>" + "<p>Angka puluhan: " + puluhan + "</p>" + "<p>Angka ratusan: " + ratusan + "</p>";
+    }
+    </script>
+</body>
+</html>
