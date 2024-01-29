@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        let total = 0;
+        let min = Infinity;
+        let max = -Infinity;
+
+        for (let i = 0; i < 20; i++) {
+            let input = parseInt(prompt("Masukkan bilangan ke-" + (i + 1) + ":"));
+            total += input;
+
+            if (input < min) {
+                min = input;
+            }
+
+            if (input > max) {
+                max = input;
+            }
+        }
+
+        let average = total / 20;
+
+        console.log("Bilangan terkecil: " + min);
+        console.log("Bilangan terbesar: " + max);
+        console.log("Rata-rata: " + average);
+        
+    </script>
+
+</body>
+</html>
