@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUARA KELAS</title>
+    <style>
+
+        body{
+            text-align: center;
+        }
+
+        .tabel{
+            text-align: center;
+        }
+
+        .tabel tr{
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            border-bottom: solid 2px black;
+            border-top: solid 2px black;
+        }
+
+    </style>
+</head>
+<body>
+
+    <main>
+
+        <form onsubmit="return false;">
+            <h2>MASUKAN NAMA SISWA :</h2>
+            <input type="text" id="namaSiswa" placeholder="MASUKAN NAMA">
+            <h2>INPUT NILAI :</h2>
+            <p>MTK</p>
+            <input type="number" id="nilaiMtk" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
+            <p>BAHASA INDONESIA</p>
+            <input type="number" id="nilaiIndo" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
+            <p>BAHASA INGGRIS</p>
+            <input type="number" id="nilaiInggris" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
+            <p>DPK</p>
+            <input type="number" id="nilaiDpk" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
+            <p>AGAMA</p>
+            <input type="number" id="nilaiAgama" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
+            <p>MASUKAN PERSENTASE KEHADIRAN :</p>
+            <input type="number" id="nilaiHadir" placeholder="MASUKAN DATA" min="0" max="100" style="width: 150px;">
+            <br>
+            <br>
+            <input type="submit" value="INPUT" onclick="inputNilai()">
+        </form>
+
+        <table id="tableNilai" style="border: solid 2px black; width: 100%; margin-top: 20px;" class="tabel">
+            <tr>
+                <th>NAMA SISWA</th>
+                <th>MTK</th>
+                <th>B.INDONESIA</th>
+                <th>B.INGGRIS</th>
+                <th>DPK</th>
+                <th>AGAMA</th>
+                <th>TOTAL NILAI</th>
+                <th>KEHADIRAN</th>
+            </tr>
+        </table>
+        <input type="submit" value="CEK JUARA" onclick="cekJuara()" style="margin-top: 10px;">
+
+    </main>
+
+    <script>
+        function inputNilai(){
+            let namaSiswa = document.getElementById('namaSiswa').value;
+            let nilaiMtk = parseFloat(document.getElementById('nilaiMtk').value);
+            let nilaiIndo = parseFloat(document.getElementById('nilaiIndo').value);
+            let nilaiInggris = parseFloat(document.getElementById('nilaiInggris').value);
+            let nilaiDpk = parseFloat(document.getElementById('nilaiDpk').value);
+            let nilaiAgama = parseFloat(document.getElementById('nilaiAgama').value);
+            let nilaiHadir = parseFloat(document.getElementById('nilaiHadir').value);
+            
+            let totalNilai = nilaiMtk + nilaiIndo + nilaiInggris + nilaiDpk + nilaiAgama;
+
+            if(namaSiswa == 0 || isNaN(nilaiMtk) || isNaN(nilaiIndo) || isNaN(nilaiInggris) || isNaN(nilaiDpk) || isNaN(nilaiAgama) || isNaN(nilaiHadir)){
+                alert("MASUKAN DATA YANG LENGKAP");
+                return;
+            }
+
+            let table = document.getElementById('tableNilai');
+            let row = table.insertRow(-1);
+
+            let nama = row.insertCell(0);
+            nama.innerHTML = namaSiswa;
+
+            let mtk = row.insertCell(1);
+            mtk.innerHTML = nilaiMtk;
+            
+            let indonesia = row.insertCell(2);
+            indonesia.innerHTML = nilaiIndo;
+            
+            let inggris = row.insertCell(3);
+            inggris.innerHTML = nilaiInggris;
+            
+            let dpk = row.insertCell(4);
+            dpk.innerHTML = nilaiDpk;
+            
+            let agama = row.insertCell(5);
+            agama.innerHTML = nilaiAgama;
+            
+            let jumlah = row.insertCell(6);
+            jumlah.innerHTML = totalNilai;
+            
+            let hadir = row.insertCell(7);
+            hadir.innerHTML = nilaiHadir;
+        }
+
+        function cekJuara(){
+            let table = document.getElementById('tableNilai');
+            let rows = table.getElementsByTagName("tr");
+
+            let juaraUmum = false;
+
+            for(let cek = 1; cek < rows.length; cek++){
+                let cells = rows[cek].getElementsByTagName('td');
+                let namaSiswa = cells[0].innerHTML;
+                let totalNilai = parseFloat(cells[6].innerHTML);
+                let nilaiHadir = parseFloat(cells[7].innerHTML);
+
+                if(totalNilai >= 475 && nilaiHadir == 100){
+                    alert("ANANDA " + namaSiswa + " MERUPAKAN JUARA KELAS DENGAN TOTAL NILAI " + totalNilai +" DAN KEHADIRAN " + nilaiHadir)
+                    juaraUmum = true;
+                }
+            
+            }
+        
+            if(!juaraUmum){
+                alert("BELUM ADA JUARA KELAS");
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

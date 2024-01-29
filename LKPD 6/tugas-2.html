@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIKET</title>
+</head>
+
+<body>
+    <h1>PENJUALAN TIKET BIOSKOP</h1>
+    <h5>*HANYA ADA 50 TIKET TIAP KELAS</h5>
+
+    <h3>MASUKAN JUMLAH TIKET YANG TERJUAL :</h3>
+    <p>TIKET VIP</p>
+    <input type="number" id="tiketVip" placeholder="MASUKAN DATA" max="50" />
+    <p>TIKET EKSEKUTIF</p>
+    <input type="number" id="tiketEksekutif" placeholder="MASUKAN DATA" max="50" />
+    <p>TIKET EKONOMI</p>
+    <input type="number" id="tiketEkonomi" placeholder="MASUKAN DATA" max="50" />
+    <input type="submit" value="CEK" onclick="hitung()" />
+
+    <div id="result" style="visibility: hidden">
+        <div id="keuntunganPerkelas">
+            <h3>KEUNTUNGAN PER KELAS</h3>
+            <p>VIP : <span id="hasilVip"></span></p>
+            <p>EKSEKUTIF : <span id="hasilEksekutif"></span></p>
+            <p>EKONOMI : <span id="hasilEkonomi"></span></p>
+        </div>
+        <h3>KEUNTUNGAN SELURUHNYA ADALAH : <span id="keuntunganAll"></span></h3>
+        <div id="jumlahTiket">
+            <h3>JUMLAH TIKET TERJUAL DAN SISA NYA</h3>
+            <p>
+                VIP : TERJUAL : <span id="terjualVip"></span> SISA TIKET :
+                <span id="sisaVip"></span>
+            </p>
+            <p>
+                EKSEKUTIF : TERJUAL : <span id="terjualEksekutif"></span> SISA TIKET :
+                <span id="sisaEksekutif"></span>
+            </p>
+            <p>
+                EKONOMI : TERJUAL : <span id="terjualEkonomi"></span> SISA TIKET :
+                <span id="sisaEkonomi"></span>
+            </p>
+        </div>
+        <h3>JUMLAH SELURUH TIKET TERJUAL : <span id="totalTiket"></span></h3>
+    </div>
+
+    <script>
+        function hitung() {
+            let tiketVip = parseFloat(document.getElementById("tiketVip").value);
+            let tiketEkse = parseFloat(
+                document.getElementById("tiketEksekutif").value
+            );
+            let tiketEko = parseFloat(
+                document.getElementById("tiketEkonomi").value
+            );
+
+            let keuntunganVip = document.getElementById("hasilVip");
+            let keuntunganEkse = document.getElementById("hasilEksekutif");
+            let keuntunganEko = document.getElementById("hasilEkonomi");
+
+            let keuntunganAll = document.getElementById("keuntunganAll");
+
+            let terjualVip = document.getElementById("terjualVip");
+            let terjualEkse = document.getElementById("terjualEksekutif");
+            let terjualEko = document.getElementById("terjualEkonomi");
+
+            let sisaVip = document.getElementById("sisaVip");
+            let sisaEkse = document.getElementById("sisaEksekutif");
+            let sisaEko = document.getElementById("sisaEkonomi");
+
+            let totalTiket = document.getElementById("totalTiket");
+
+            if (tiketVip >= 35) {
+                keuntunganVip.innerHTML = 25 + "%";
+            } else if (tiketVip >= 20 && tiketVip < 35) {
+                keuntunganVip.innerHTML = 15 + "%";
+            } else if (tiketVip < 20) {
+                keuntunganVip.innerHTML = 5 + "%";
+            }
+
+            if (tiketEkse >= 40) {
+                keuntunganEkse.innerHTML = 40 + "%";
+            } else if (tiketEkse >= 20 && tiketEkse < 40) {
+                keuntunganEkse.innerHTML = 10 + "%";
+            } else if (tiketEkse < 20) {
+                keuntunganEkse.innerHTML = 2 + "%";
+            }
+
+            if (tiketEko > 0) {
+                keuntunganEko.innerHTML = 7 + "%";
+            }
+
+            let rumusTotalKeuntungan =
+                parseFloat(keuntunganVip.innerHTML) +
+                parseFloat(keuntunganEkse.innerHTML) +
+                parseFloat(keuntunganEko.innerHTML);
+            keuntunganAll.innerText = rumusTotalKeuntungan + "%";
+
+            terjualVip.innerHTML = tiketVip;
+            sisaVip.innerHTML = 50 - tiketVip;
+
+            terjualEkse.innerHTML = tiketEkse;
+            sisaEkse.innerHTML = 50 - tiketEkse;
+
+            terjualEko.innerHTML = tiketEko;
+            sisaEko.innerHTML = 50 - tiketEko;
+
+            rumusTotalTiket = tiketVip + tiketEkse + tiketEko;
+            totalTiket.innerHTML = rumusTotalTiket;
+
+            document.getElementById("result").style.visibility = "visible";
+        }
+    </script>
+</body>
+
+</html>

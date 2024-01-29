@@ -26,7 +26,12 @@
             let bln = Math.floor(kodePegawai / 1000000) % 100;
             let nameBln;
             let thn = Math.floor(kodePegawai / 100) % 10000;
-            let urut = kodePegawai % 10;
+            let urut = kodePegawai % 100;
+
+            if (isNaN(kodePegawai)) {
+                alert("Masukkan data yang benar!");
+                return;
+            }
             
             if (golongan < 1 || golongan > 4 || tgl < 1 || tgl > 31 || bln < 1 || bln > 12 || thn < 1900 || thn > 2024) {
                 elementHasil.innerHTML = "<p>MASUKAN KODE PEGAWAI YANG VALID!</p>";
