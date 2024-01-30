@@ -6,12 +6,81 @@
     <title>JUARA KELAS</title>
     <style>
 
+        *{
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
         body{
+            padding: 0;
+            margin: 0;
+        }
+
+        header{
+            background-image: linear-gradient( 58.2deg,  rgba(40,91,212,0.73) -3%, rgba(171,53,163,0.45) 49.3%, rgba(255,204,112,0.37) 97.7% );
+            box-shadow: 0 0 30px 10px rgba(0,0,0,0.8);
+            padding: 40px;
             text-align: center;
+        }
+
+        header h1{
+            font-size: 40px;
+            letter-spacing: 10px;
+        }
+
+        main{
+            margin: 0;
+            height: 100vh;
+            padding: 30px;
+            background-image: linear-gradient( 160deg,  rgba(40,91,212,0.5) -3%, rgba(171,53,163,0.3) 49.3%, rgba(255,204,112,0.2) 97.7% );
+        }
+
+        form{
+            display: flex;
+            justify-content:left;
+            gap: 100px;
+        }
+
+        .namaSiswa input{
+            margin-top: 20px;
+            width: 100%;
+            height: 30px;
+            padding: 10px;
+            border: solid 2px rgba(0,0,0,0.5);
+            border-radius: 10px;
+        }
+
+        .nilaiSiswa input{
+            margin-top: 5px;
+            width: 100%;
+            height: 30px;
+            padding: 10px;
+            border: solid 2px rgba(0,0,0,0.5);
+            border-radius: 10px;
+        }
+
+        .nilaiSiswa h3{
+            margin-top: 10px;
+        }
+
+        .namaSiswa h3{
+            margin-top: 20px;
+        }
+
+        .containerTombol{
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .tombolCek{
+            width: 20%;
+            height: 50px;
         }
 
         .tabel{
             text-align: center;
+            background-color: whitesmoke;
         }
 
         .tabel tr{
@@ -26,29 +95,37 @@
 </head>
 <body>
 
+    <header>
+        <h1>ALGORITFERRR</h1>
+    </header>
+    
     <main>
-
+        
+        
         <form onsubmit="return false;">
-            <h2>MASUKAN NAMA SISWA :</h2>
-            <input type="text" id="namaSiswa" placeholder="MASUKAN NAMA">
-            <h2>INPUT NILAI :</h2>
-            <p>MTK</p>
-            <input type="number" id="nilaiMtk" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
-            <p>BAHASA INDONESIA</p>
-            <input type="number" id="nilaiIndo" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
-            <p>BAHASA INGGRIS</p>
-            <input type="number" id="nilaiInggris" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
-            <p>DPK</p>
-            <input type="number" id="nilaiDpk" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
-            <p>AGAMA</p>
-            <input type="number" id="nilaiAgama" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
-            <p>MASUKAN PERSENTASE KEHADIRAN :</p>
-            <input type="number" id="nilaiHadir" placeholder="MASUKAN DATA" min="0" max="100" style="width: 150px;">
-            <br>
-            <br>
-            <input type="submit" value="INPUT" onclick="inputNilai()">
+            <div class="namaSiswa">
+                <h2>MASUKAN NAMA SISWA :</h2>
+                <input type="text" id="namaSiswa" placeholder="MASUKAN NAMA">
+                <h3>MASUKAN PERSENTASE KEHADIRAN :</h3>
+                <input type="number" id="nilaiHadir" placeholder="MASUKAN DATA" min="0" max="100">
+                <input type="submit" value="INPUT" onclick="inputNilai()">
+            </div>
+            <div class="nilaiSiswa">
+                <h2>INPUT NILAI :</h2>
+                <h3>MTK</h3>
+                <input type="number" id="nilaiMtk" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
+                <h3>BAHASA INDONESIA</h3>
+                <input type="number" id="nilaiIndo" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
+                <h3>BAHASA INGGRIS</h3>
+                <input type="number" id="nilaiInggris" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
+                <h3>DPK</h3>
+                <input type="number" id="nilaiDpk" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
+                <h3>AGAMA</h3>
+                <input type="number" id="nilaiAgama" placeholder="MASUKAN NILAI" min="0" max="100" style="width: 150px;">
+            </div>
         </form>
 
+        <h1 style="text-align: center; margin-top: 50px;">TABEL SISWA</h1>
         <table id="tableNilai" style="border: solid 2px black; width: 100%; margin-top: 20px;" class="tabel">
             <tr>
                 <th>NAMA SISWA</th>
@@ -61,7 +138,9 @@
                 <th>KEHADIRAN</th>
             </tr>
         </table>
-        <input type="submit" value="CEK JUARA" onclick="cekJuara()" style="margin-top: 10px;">
+        <div class="containerTombol">
+            <input type="submit" value="CEK JUARA" onclick="cekJuara()" class="tombolCek">
+        </div>
 
     </main>
 
@@ -74,6 +153,7 @@
             let nilaiDpk = parseFloat(document.getElementById('nilaiDpk').value);
             let nilaiAgama = parseFloat(document.getElementById('nilaiAgama').value);
             let nilaiHadir = parseFloat(document.getElementById('nilaiHadir').value);
+            
             
             let totalNilai = nilaiMtk + nilaiIndo + nilaiInggris + nilaiDpk + nilaiAgama;
 
@@ -123,7 +203,7 @@
                 let nilaiHadir = parseFloat(cells[7].innerHTML);
 
                 if(totalNilai >= 475 && nilaiHadir == 100){
-                    alert("ANANDA " + namaSiswa + " MERUPAKAN JUARA KELAS DENGAN TOTAL NILAI " + totalNilai +" DAN KEHADIRAN " + nilaiHadir)
+                    alert("ANANDA " + namaSiswa + " MERUPAKAN JUARA KELAS DENGAN TOTAL NILAI " + totalNilai + " DAN KEHADIRAN " + nilaiHadir)
                     juaraUmum = true;
                 }
             
